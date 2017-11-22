@@ -6,17 +6,7 @@ var animals = ["marmot", "dik-dik", "narwhal"];
 var animal;
 
 $(document).ready(function() {
-//fires when one of the prebuilt buttons is clicked
-  $(".starterGif").on("click", function () {
-    event.preventDefault();
-    console.log("starterGif clicked");
-    //empties previous gifs from div
-    $("#animalGifs").html("");
-    //the id of the animal is conveniently the same as its search term
-    animal = this.id;
-    console.log(animal);
-    fetchGifs();
-  }); //end of on click starterGif
+
 //fetches gifs from giphy, pushes to html, and creates still/animate toggle
   function fetchGifs () {
     console.log("fetchGifs ran");
@@ -85,4 +75,20 @@ $(document).ready(function() {
     fetchGifs ();
 
   }); // end of on click of addanimal
+
+
+
+  //fires when one of the prebuilt buttons is clicked
+    $(document).on("click", ".starterGif", function () {
+      event.preventDefault();
+      console.log("starterGif clicked");
+      //empties previous gifs from div
+      $("#animalGifs").html("");
+      //the id of the animal is conveniently the same as its search term
+      animal = this.id;
+      console.log(animal);
+      fetchGifs();
+    }); //end of on click starterGif
+
+
   }); // end of doc ready
