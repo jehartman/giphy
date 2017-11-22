@@ -1,7 +1,8 @@
 
 
 //defines animal array and animal variable for use later
-var animals = ["wolf", "marmot", "shark"];
+//animals array is not needed but in case i ever want to use this again for another purpose i included the array
+var animals = ["marmot", "dik-dik", "narwhal"];
 var animal;
 
 $(document).ready(function() {
@@ -9,11 +10,14 @@ $(document).ready(function() {
   $(".starterGif").on("click", function () {
     event.preventDefault();
     console.log("starterGif clicked");
+    //empties previous gifs from div
+    $("#animalGifs").html("");
+    //the id of the animal is conveniently the same as its search term
     animal = this.id;
     console.log(animal);
     fetchGifs();
   }); //end of on click starterGif
-//fetches gifs from giphy and
+//fetches gifs from giphy, pushes to html, and creates still/animate toggle
   function fetchGifs () {
     console.log("fetchGifs ran");
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animal + "&api_key=36a7c06c6a1549e4b4fd0dba9159d4f1&limit=10";
@@ -61,15 +65,15 @@ $(document).ready(function() {
 
       }// end of fetchGifs
 
-
+//adds new animal buttons and clears previous gifs
   $("#addAnimal").on("click", function(event) {
     event.preventDefault();
     //empties previous gifs from div
     $("#animalGifs").html("");
     animal = $("#animal-input").val().trim();
     console.log(animal);
-    //creates dedicated animal gif button
 
+    //creates dedicated animal gif button
     function createButton () {
       animal = animal.toUpperCase ();
       $("#animalButtons").append("<button type='button' id='" + animal +"' value=>" + "See " + animal + " gifs</button>");
@@ -80,7 +84,5 @@ $(document).ready(function() {
     createButton ();
     fetchGifs ();
 
-    }); // end of on click of addaninal
-
-
+  }); // end of on click of addanimal
   }); // end of doc ready
