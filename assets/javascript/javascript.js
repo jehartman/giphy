@@ -76,7 +76,7 @@ $(document).ready(function() {
     //creates dedicated animal gif button
     function createButton () {
       animal = animal.toUpperCase ();
-      $("#animalButtons").append("<button type='button' id='" + animal +"' value=>" + "See " + animal + " gifs</button>");
+      $("#animalButtons").append("<button type='button' class='starterGif' id='" + animal.toLowerCase() +"'>" + "See " + animal + " gifs</button>");
       animals.push(animal);
       console.log(animals);
     } //end of create button
